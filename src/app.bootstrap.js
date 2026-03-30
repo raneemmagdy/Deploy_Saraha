@@ -6,6 +6,7 @@ import { checkConnectionDB } from './DB/connection.db.js'
 import cors from 'cors'
 import { resolve } from 'path'
 import { connectRedis } from './DB/redis.connection.db.js'
+import { deleteUnconfirmedUser } from './Common/Utils/cron-job.js'
 const bootstrap = async () => {
     const app = express()
     //===========================middleware===========================
@@ -23,7 +24,7 @@ const bootstrap = async () => {
     app.use('/auth', authRouter)
     app.use('/user', userRouter)
     //===========================Cron job===========================
-
+    deleteUnconfirmedUser()
 
     //===========================Root===============================
     app.get('/', (req, res) => {
