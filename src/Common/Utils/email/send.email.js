@@ -17,9 +17,9 @@ export const sendEmail = async ({
             pass: EMAIL_APP_PASSWORD
         },
         requireTLS: true,
-        tls: {
-            rejectUnauthorized: false
-        }
+        // tls: {
+        //     rejectUnauthorized: false
+        // }
     });
 
     const info = await transporter.sendMail({
