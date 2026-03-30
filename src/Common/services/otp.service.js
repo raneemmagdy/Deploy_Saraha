@@ -2,7 +2,7 @@ import { TypeRedisKeyEnum } from "../enum/redis.enum.js";
 import { generateHash, generateOTP, emailEmitter, ConflictException } from "../Utils/index.js";
 import { blockKey, deleteKey, get, increment, otpKey, otpMaxRequestKey, set, ttl } from "./redis.service.js";
 
-export const generateOtpAndSendOtpEmail = async ({ email, expiredTime = 0.5, title = TypeRedisKeyEnum.ConfirmEmail, subject = "Verify your email" }) => {
+export const generateOtpAndSendOtpEmail = async ({ email, expiredTime = 2, title = TypeRedisKeyEnum.ConfirmEmail, subject = "Verify your email" }) => {
     const code = generateOTP();
     await set({
         key: otpKey({ email, type: title }),
