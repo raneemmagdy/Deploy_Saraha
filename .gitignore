@@ -1,0 +1,6 @@
+#Modules
+node_modules
+
+#.env
+config/.env.development
+config/.env.production
