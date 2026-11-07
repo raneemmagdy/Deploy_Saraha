@@ -80,7 +80,7 @@ export const login = async (body, issuer) => {
     const message = await send2FACode(user, false);
     return { message, is2FA: true };
   }
-  return { data: await createLoginCredintials({ user, issuer }), is2FA };
+  return { data: await createLoginCredintials(user, issuer ), is2FA };
 };
 export const loginFor2FA = async (body, issuer) => {
   const { email, otp } = body;
